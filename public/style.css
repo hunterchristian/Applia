@@ -1,0 +1,47 @@
+.app {
+  color: grey;
+}
+
+.editor {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.componentPalette {
+  background: rgba(0,0,0,.2);
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.component {
+  padding: 5px;
+  margin: 0 5px;
+  font-size: 25px;
+  font-family: monospace;
+  border-radius: 2px;
+  cursor: -webkit-grab;
+}
+
+.component:hover {
+  background: rgba(0, 0, 0, .1);
+}
+
+.column {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.01);
+  height: 100%;
+  width: 100%;
+  border-left: rgba(0, 0, 0, 0.02) 1px solid;
+
+    -ms-flex: 0 0 calc(8.333333% - 1px);
+    flex: 0 0 calc(8.333333% - 1px);
+    max-width: calc(8.333333% - 1px);
+}
+
+.column:first-of-type{
+  border-left: none;
+}

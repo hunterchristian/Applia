@@ -1,22 +1,16 @@
 import * as React from 'react';
 
 import {
-  ElementComponent
-} from '@components/ComponentPalette/ElementComponent';
-
-// bypass TypeScript by using a 'require' rather than 'import'
-// TODO: add .scss support to webpack
-//const styles = require('./styles.scss')
+  Element
+} from '@components/ComponentPalette/Element';
+import { reset } from '@renderer/state';
 
 export const ComponentPalette = () => (
-  <div className={ 'componentPalette' }>
-    <div className={ 'component' }> =div= </div>
-    <div className={ 'component' }> =div= </div>
-    <div className={ 'component' }> =div= </div>
-    <div className={ 'component' }> =div= </div>
-    <div className={ 'component' }> =div= </div>
-    <div className={ 'component' }> =div= </div>
-    <div className={ 'component' }> =div= </div>
-    <div className={ 'component' }> =div= </div>
+  <div className={ 'componentPalette' } style={{ display: 'flex', justifyContent: 'center' }}>
+    <Element tagName={ 'div' } />
+    <button onClick={ reset } style={{
+      position: 'absolute',
+      right: '10px',
+    }}>reset</button>
   </div>
 );

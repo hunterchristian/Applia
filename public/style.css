@@ -45,3 +45,16 @@
 .column:first-of-type{
   border-left: none;
 }
+
+.grid {
+  position: relative;
+
+  height: 100%;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+  background: lightblue;
+}

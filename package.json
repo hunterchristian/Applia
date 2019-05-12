@@ -30,6 +30,8 @@
     "@types/react": "^16.7.18",
     "@types/react-dom": "^16.0.11",
     "react": "^16.7.0",
+    "react-dnd": "^7.4.5",
+    "react-dnd-html5-backend": "^7.4.4",
     "react-dom": "^16.7.0"
   },
   "devDependencies": {

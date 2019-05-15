@@ -1,15 +1,22 @@
-export type TagName = 'div' | 'span' | 'a' | 'h1';
-export type Elements = TagName[];
-type Observer = (elements: Elements) => void;
+import {
+  createRootNode,
+  HTMLNode,
+  Tag,
+} from '@models/CanvasNode/HTMLNode';
 
-let elements: Elements = [];
+type Observer = (rootNode: HTMLNode) => void;
+
+let rootNode: HTMLNode = createRootNode();
+const quickLookup: Map<string, HTMLNode> = new Map<string, HTMLNode>();
+quickLookup.set(rootNode.id, rootNode);
+
 let observer: Nullable<Observer> = null;
 
 const emitChange = () => {
   if (!observer) {
     throw new Error('Observer does not exist. Did you call observe() yet?');
   }
-  observer(elements);
+  observer(rootNode);
 };
 
 export const observe = (o: Observer) => {
@@ -21,12 +28,22 @@ export const observe = (o: Observer) => {
   emitChange();
 };
 
-export const addTagName = (tagName: TagName) => {
-  elements.push(tagName);
+export const addHTMLNode = (parentId: string, tag: Tag, attrs: React.HTMLAttributes<HTMLElement>) => {
+  const parent = quickLookup.get(parentId);
+  if (parent) {
+    const newNode = new HTMLNode(parent.depth + 1, tag, attrs);
+    parent.children.push(newNode);
+    quickLookup.set(newNode.id, newNode);
+  } else {
+    throw new Error(`Could not find CanvasNode for given id: ${ parentId }`);
+  }
+
   emitChange();
 };
 
 export const reset = () => {
-  elements = [];
+  rootNode = createRootNode();
+  quickLookup.clear();
+  quickLookup.set(rootNode.id, rootNode);
   emitChange();
 };

@@ -3,6 +3,8 @@
 }
 
 .editor {
+  display: flex;
+  flex-direction: column;
   position: absolute;
   top: 0;
   right: 0;
@@ -15,6 +17,7 @@
   padding: 10px;
   display: flex;
   justify-content: center;
+  height: 30px;
 }
 
 .component {
@@ -48,13 +51,11 @@
 
 .grid {
   position: relative;
-
   height: 100%;
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+  background: rgba(173, 216, 230, 1.0);
+}
 
-  background: lightblue;
+.hovering {
+  background: rgba(255, 105, 108, 0.5);
 }

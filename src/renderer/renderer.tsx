@@ -8,8 +8,8 @@ import * as ReactDOM from 'react-dom';
 
 import { ComponentPalette } from '@components/ComponentPalette';
 import { Grid } from '@components/Grid';
+import { HTMLNode } from '@models/CanvasNode/HTMLNode';
 import {
-  Elements,
   observe,
 } from '@renderer/state';
 
@@ -17,21 +17,21 @@ import {
 import '@public/style.css';
 
 interface OwnProps {
-  elements: Elements;
+  rootNode: HTMLNode;
 }
 
 const App = (props: OwnProps) => (
   <div className={ 'editor' }>
     <ComponentPalette />
-    <Grid elements={ props.elements } />
+    <Grid rootNode={ props.rootNode } />
   </div>
 );
 
 const DnDEnabledApp = DragDropContext(HTML5Backend)(App);
 
-observe(elements => (
+observe(rootNode => (
   ReactDOM.render(
-    <DnDEnabledApp elements={ elements } />,
+    <DnDEnabledApp rootNode={ rootNode } />,
     document.getElementById('app')
   )
 ));

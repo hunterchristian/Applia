@@ -13,10 +13,10 @@ interface DragProps {
   connectDragSource: ConnectDragSource;
 }
 interface OwnProps {
-  tagName: string;
+  tag: string;
 }
 export interface SourceProps {
-  tagName: string;
+  tag: string;
 }
 
 type AllComponentProps = OwnProps & DragProps;
@@ -30,19 +30,19 @@ const mapDragProps = (connect: DragSourceConnector, monitor: DragSourceMonitor):
  * Implement the drag source contract.
  */
 const elementSource = {
-  beginDrag: (props: AllComponentProps): SourceProps => ({ tagName: props.tagName }),
+  beginDrag: (props: AllComponentProps): SourceProps => ({ tag: props.tag }),
 };
 
 const Element = DragSource(ItemTypes.ELEMENT, elementSource, mapDragProps)(({
   connectDragSource,
   isDragging,
-  tagName,
+  tag,
 }: AllComponentProps) => (
   connectDragSource(<div style={{
     opacity: isDragging ? 0.5 : 1,
     display: 'inline-block',
   }}>
-    { tagName }
+    { tag }
   </div>)
 ));
 

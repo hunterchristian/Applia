@@ -31,8 +31,8 @@ export const observe = (o: Observer) => {
 export const addHTMLNode = (parentId: string, tag: Tag, attrs: React.HTMLAttributes<HTMLElement>) => {
   const parent = quickLookup.get(parentId);
   if (parent) {
-    const newNode = new HTMLNode(parent.depth + 1, tag, attrs);
-    parent.children.push(newNode);
+    const newNode = new HTMLNode(tag, attrs);
+    parent.addChild(newNode);
     quickLookup.set(newNode.id, newNode);
   } else {
     throw new Error(`Could not find CanvasNode for given id: ${ parentId }`);

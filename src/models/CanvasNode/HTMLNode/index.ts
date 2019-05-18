@@ -5,14 +5,19 @@ export type Tag = 'a' | 'abbr' | 'address' | 'area' | 'article' | 'aside' | 'aud
 
 export class HTMLNode extends CanvasNode {
   attrs: React.HTMLAttributes<HTMLElement>;
-  depth: number;
+  children: CanvasNode[];
   tag: Tag;
 
-  constructor(depth: number, tag: Tag, attrs: React.HTMLAttributes<HTMLElement>) {
-    super(depth);
+  constructor(tag: Tag, attrs: React.HTMLAttributes<HTMLElement>) {
+    super();
 
     this.attrs = attrs;
+    this.children = [];
     this.tag = tag;
+  }
+
+  addChild(child: CanvasNode) {
+    this.children.push(child);
   }
 }
 
@@ -27,4 +32,4 @@ const rootNodeStyle: React.CSSProperties = {
 };
 
 export const createRootNode = (): HTMLNode =>
-  new HTMLNode(0, 'div', { style: rootNodeStyle });
+  new HTMLNode('div', { style: rootNodeStyle });

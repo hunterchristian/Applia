@@ -41,6 +41,12 @@ const Element = DragSource(ItemTypes.ELEMENT, elementSource, mapDragProps)(({
   connectDragSource(<div style={{
     opacity: isDragging ? 0.5 : 1,
     display: 'inline-block',
+    border: '1px solid black',
+    borderRadius: '2px',
+    background: 'rgba(0,0,0,.3)',
+    padding: '5px 10px',
+    color: 'white',
+    cursor: '-webkit-grab',
   }}>
     { tag }
   </div>)

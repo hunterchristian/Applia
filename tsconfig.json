@@ -3,14 +3,17 @@
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
     "baseUrl": ".",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
     "paths": {
       "@/*": ["src/*"],
       "@public/*": ["public/*"],
       "@main/*": ["src/main/*"],
-      "@models/*": ["src/models/*"],
+      "@models/*": ["src/renderer/models/*"],
       "@renderer/*": ["src/renderer/*"],
       "@utils/*": ["src/utils/*"],
       "@components/*": ["src/renderer/components/*"],
+      "@decorators/*": ["src/decorators/*"]
     },
     "module": "commonjs",
     "moduleResolution": "node",
@@ -18,11 +21,11 @@
     "noImplicitThis": true,
     "strictNullChecks": true,
     "sourceMap": true,
-    "target": "esnext"
+    "target": "esnext",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/typings"
+    ]
   },
-  "exclude": ["node_modules"],
-  "typeRoots": [
-    "./node_modules/@types",
-    "src/typings/**/*.d.ts"
-  ]
+  "exclude": ["node_modules"]
 }

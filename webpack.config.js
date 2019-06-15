@@ -19,12 +19,12 @@ const commonConfig = {
   resolve: {
     alias: {
       '@': srcPaths('src'),
-      '@main': srcPaths('src/main'),
-      '@models': srcPaths('src/models'),
       '@public': srcPaths('public'),
+      '@main': srcPaths('src/main'),
+      '@models': srcPaths('src/renderer/models'),
       '@renderer': srcPaths('src/renderer'),
-      '@utils': srcPaths('src/utils'),
       '@components': srcPaths('src/renderer/components'),
+      '@decorators': srcPaths('src/decorators'),
     },
     extensions: ['.js', '.json', '.ts', '.tsx'],
   },

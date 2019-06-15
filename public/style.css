@@ -4,7 +4,7 @@
 
 .editor {
   display: flex;
-  flex-direction: column;
+  flex-flow: column;
   position: absolute;
   top: 0;
   right: 0;
@@ -58,4 +58,8 @@
 
 .hovering {
   background: rgba(255, 105, 108, 0.5);
+}
+
+.selected {
+  background: fuchsia;
 }

@@ -10,7 +10,8 @@
     "test": "jest",
     "build:win": "electron-builder build --win --x64",
     "build:mac": "electron-builder build --mac --x64",
-    "lint": "tslint -c tslint.json 'src/**/*.ts'"
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "build": "NODE_ENV=development webpack && npm run lint && npm run build:win && npm run build:mac"
   },
   "build": {
     "appId": "com.devtography.electron_boilerplate",

@@ -1,3 +1,5 @@
+[![Heroku CI Status](https://draftr-heroku-ci-badge.herokuapp.com/last.svg)](https://dashboard.heroku.com/pipelines/58c72a49-0551-4b94-bda4-30f4ddf203fc/tests)
+
 # Electron-React-TypeScript-Webpack-Boilerplate
 Pre-configured Electron.js + React.js + TypeScript boilerplate with 
 Webpack v4 & linters config predefined.

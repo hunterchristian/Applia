@@ -1,9 +1,7 @@
+# Draftr
 [![Heroku CI Status](https://draftr-ci-badge.herokuapp.com/last.svg)](https://dashboard.heroku.com/pipelines/58c72a49-0551-4b94-bda4-30f4ddf203fc/tests)
 
-# Electron-React-TypeScript-Webpack-Boilerplate
-Pre-configured Electron.js + React.js + TypeScript boilerplate with 
-Webpack v4 & linters config predefined.
-
+/////////// From Electron+webpack+typescript boilerplate
 ## Getting started
 ```json
 // edit the following fields in package.json for your own project
@@ -104,7 +102,3 @@ electron-react-typescript-base-proj/
 | - tslint.json         //- TSLint config
 | - webpack.config.js   //- Webpack config
 ```
-
-## License
-Electron React TypeScript Webpack Boilerplate is open source software 
-[licensed as MIT](LICENSE).

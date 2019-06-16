@@ -8,6 +8,7 @@ const {
 
 const mockNotifyObserver = () => {
   const mock = jest.fn();
+  // tslint:disable-next-line:no-unbound-method
   const original = state.notifyObserver;
   state.notifyObserver = mock;
 

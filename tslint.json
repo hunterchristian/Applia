@@ -134,7 +134,6 @@
     "no-unsafe-any": true,
     "no-unsafe-finally": true,
     "no-unused-expression": false,
-    "no-unused-variable": true,
     "no-use-before-declare": true,
     "no-var-keyword": true,
     "no-void-expression": [
@@ -228,7 +227,6 @@
     "class-name": true,
     "comment-format": [
       true,
-      "check-uppercase",
       "check-space",
       {
         "ignore-words": [
@@ -266,7 +264,7 @@
       true,
       "check-multiline-start"
     ],
-    "match-default-export-name": true,
+    "match-default-export-name": false,
     "newline-before-return": true,
     "newline-per-chained-call": false,
     "new-parens": true,

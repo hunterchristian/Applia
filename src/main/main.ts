@@ -14,16 +14,16 @@ function createWindow(): void {
         width: 800,
         webPreferences: {
             webSecurity: false,
-            devTools: process.env.NODE_ENV === 'production' ? false : true
-        }
+            devTools: process.env.NODE_ENV === 'production' ? false : true,
+        },
     });
 
-    // and load the index.html of the app.
+    // And load the index.html of the app.
     mainWindow.loadURL(
         url.format({
             pathname: path.join(__dirname, './index.html'),
             protocol: 'file:',
-            slashes: true
+            slashes: true,
         })
     );
 

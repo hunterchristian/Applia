@@ -1,5 +1,3 @@
-import { Action, Store } from 'redux';
-
 // Helper types for OmitType
 type FlagExcludedType<B, U> = { [Key in keyof B]: B[Key] extends U ? never : Key };
 type AllowedNames<B, U> = FlagExcludedType<B, U>[keyof B];

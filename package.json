@@ -4,14 +4,16 @@
   "description": "Pre-configured boilerplate for Electron + React + TypeScript",
   "main": "./dist/main.bundle.js",
   "scripts": {
+    "build:dev": "rimraf dist && cross-env NODE_ENV=development webpack --watch --progress --colors",
+    "build:prod": "rimraf dist && cross-env NODE_ENV=production webpack --progress --colors",
+    "build": "npm run build:prod && npm run test && npm run lint",
     "start": "electron ./dist/main.bundle.js",
-    "dev": "rimraf dist && cross-env NODE_ENV=development webpack --watch --progress --colors",
-    "prod": "rimraf dist && cross-env NODE_ENV=production webpack --progress --colors",
     "test": "jest",
-    "build:win": "electron-builder build --win --x64",
-    "build:mac": "electron-builder build --mac --x64",
-    "lint": "tslint -c tslint.json 'src/**/*.ts'",
-    "build": "NODE_ENV=development webpack && npm run lint && npm run build:win && npm run build:mac"
+    "release:win": "electron-builder build --win --x64",
+    "release:mac": "electron-builder build --mac --x64",
+    "release": "npm run release:win && npm run release:mac",
+    "lint:fix": "tslint --fix --project tsconfig.json --config tslint.json \"src/**/*.ts\"",
+    "lint": "tslint --project tsconfig.json --config tslint.json \"src/**/*.ts\""
   },
   "build": {
     "appId": "com.devtography.electron_boilerplate",

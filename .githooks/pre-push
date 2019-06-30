@@ -20,7 +20,7 @@
 # with "WIP" (work in progress).
 
 # Ensure that build passes before pushing
-npm run build
+yarn build
 
 remote="$1"
 url="$2"

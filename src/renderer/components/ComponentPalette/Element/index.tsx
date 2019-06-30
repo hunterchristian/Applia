@@ -6,6 +6,7 @@ import {
   DragSourceMonitor,
 } from 'react-dnd';
 
+import { Tag } from '@models/HTMLNode';
 import { ItemTypes } from '@renderer/constants';
 
 interface DragProps {
@@ -13,10 +14,10 @@ interface DragProps {
   connectDragSource: ConnectDragSource;
 }
 interface OwnProps {
-  tag: string;
+  tag: Tag;
 }
 export interface SourceProps {
-  tag: string;
+  tag: Tag;
 }
 
 type AllComponentProps = OwnProps & DragProps;
@@ -32,8 +33,7 @@ const mapDragProps = (connect: DragSourceConnector, monitor: DragSourceMonitor):
 const elementSource = {
   beginDrag: (props: AllComponentProps): SourceProps => ({ tag: props.tag }),
 };
-
-const Element = DragSource(ItemTypes.ELEMENT, elementSource, mapDragProps)(({
+const Element = (({
   connectDragSource,
   isDragging,
   tag,
@@ -52,4 +52,5 @@ const Element = DragSource(ItemTypes.ELEMENT, elementSource, mapDragProps)(({
   </div>)
 ));
 
-export { Element };
+const makeDraggable = DragSource(ItemTypes.ELEMENT, elementSource, mapDragProps);
+export const DraggableElement = makeDraggable(Element) as React.ComponentType<OwnProps>;

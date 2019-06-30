@@ -36,6 +36,14 @@ const commonConfig = {
         loader: 'ts-loader',
       },
       {
+        test: /\.(ts|tsx)$/,
+        enforce: 'pre',
+        use: [{
+          loader: 'tslint-loader',
+          options: { typeCheck: true },
+        }]
+      },
+      {
         test: /\.(scss|css)$/,
         use: ['style-loader', 'css-loader'],
       },

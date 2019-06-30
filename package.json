@@ -1,7 +1,7 @@
 {
-  "name": "electron-react-typescript-webpack-boilerplate",
-  "version": "2.0.1",
-  "description": "Pre-configured boilerplate for Electron + React + TypeScript",
+  "name": "Applia",
+  "version": "0.0.1",
+  "description": "Create web applications via drag-and-drop",
   "main": "./dist/main.bundle.js",
   "scripts": {
     "init": "yarn && git config core.hooksPath .githooks",
@@ -17,8 +17,8 @@
     "lint": "./node_modules/tslint/bin/tslint --project tsconfig.json --config tslint.json \"src/**/*.{ts,tsx}\""
   },
   "build": {
-    "appId": "com.devtography.electron_boilerplate",
-    "productName": "Electron+React+TypeScript Boilerplate",
+    "appId": "com.electron.applia",
+    "productName": "Applia",
     "directories": {
       "app": "./dist/",
       "output": "./out/"
@@ -27,10 +27,10 @@
       "target": "nsis",
       "asar": false
     },
-    "buildVersion": "1.0.0"
+    "buildVersion": "0.0.1"
   },
-  "author": "Wing Chau @Devtography",
-  "license": "MIT",
+  "author": "Hunter Hodnett",
+  "license": "UNLICENSED",
   "dependencies": {
     "@types/auto-bind": "^2.1.0",
     "@types/chai": "^4.1.7",
@@ -87,19 +87,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Devtography/electron-react-typescript-webpack-boilerplate"
+    "url": "git+https://github.com/hunterchristian/Applia.git"
   },
-  "keywords": [
-    "boilerplate",
-    "Electron",
-    "React",
-    "Typescript",
-    "Webpack"
-  ],
+  "keywords": [],
   "bugs": {
-    "url": "https://github.com/Devtography/electron-react-typescript-webpack-boilerplate/issues"
+    "url": "https://github.com/hunterchristian/Applia/issues"
   },
-  "homepage": "https://github.com/Devtography/electron-react-typescript-webpack-boilerplate#readme",
+  "homepage": "https://github.com/hunterchristian/Applia#readme",
   "jest": {
     "moduleFileExtensions": [
       "ts",

@@ -9,9 +9,10 @@ import {
 } from 'react-dnd';
 
 import { SourceProps } from '@components/ComponentPalette/Element';
-import { HTMLNode, Tag } from '@models/HTMLNode';
+import { HTMLNode } from '@models/HTMLNode';
 import { ItemTypes } from '@renderer/constants';
 import { State } from '@renderer/state';
+
 const state = State.getInstance();
 const {
   addHTMLNode,
@@ -56,8 +57,9 @@ const selectedStyle: React.CSSProperties = {
 const elementTarget = {
   drop(props: AllComponentProps, monitor: DropTargetMonitor) {
     if (!monitor.didDrop()) {
-      addHTMLNode(props.node.id, monitor.getItem().tag, { style: defaultStyle });
-      logDrop(monitor.getItem().tag);
+      const droppedItem = monitor.getItem() as SourceProps;
+      addHTMLNode(props.node.id, droppedItem.tag, { style: defaultStyle });
+      logDrop(droppedItem.tag);
     }
   },
 };
@@ -142,4 +144,5 @@ class Element extends React.Component<AllComponentProps, ComponentState> {
   }
 }
 
-export const DroppableElement = DropTarget(ItemTypes.ELEMENT, elementTarget, collect)(Element);
+const makeDroppable = DropTarget<OwnProps, CollectedProps>(ItemTypes.ELEMENT, elementTarget, collect);
+export const DroppableElement = makeDroppable(Element) as React.ComponentType<OwnProps>;

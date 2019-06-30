@@ -126,15 +126,13 @@
     "no-submodule-imports": false,
     "no-switch-case-fall-through": false,
     "no-this-assignment": true,
-    "no-unbound-method": [
-      true,
-      "ignore-static"
-    ],
+    "no-unbound-method": false,
     "no-unnecessary-class": true,
     "no-unsafe-any": true,
     "no-unsafe-finally": true,
-    "no-unused-expression": false,
-    "no-use-before-declare": true,
+    "no-unused-expression": true,
+    "no-unused-variable": true,
+    "no-use-before-declare": false,
     "no-var-keyword": true,
     "no-void-expression": [
       true,

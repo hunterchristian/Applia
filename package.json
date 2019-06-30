@@ -21,13 +21,26 @@
     "productName": "Applia",
     "directories": {
       "app": "./dist/",
-      "output": "./out/"
+      "output": "./out/",
+      "buildResources": "./installer-assets/"
     },
     "win": {
       "target": "nsis",
       "asar": false
     },
-    "buildVersion": "0.0.1"
+    "buildVersion": "0.0.1",
+    "dmg": {
+      "contents": [{
+        "type": "file",
+        "x": 170,
+        "y": 170
+      }, {
+        "path": "/Applications",
+        "type": "link",
+        "x": 360,
+        "y": 170
+      }]
+    }
   },
   "author": "Hunter Hodnett",
   "license": "UNLICENSED",

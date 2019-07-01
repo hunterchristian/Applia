@@ -1,5 +1,14 @@
+/* Color palette https://coolors.co/040403-adadad-cfe3ed-ededed-ffffff */
+:root {
+  --primary: rgba(255, 255, 255, 1);
+  --secondary: rgba(237, 237, 237, 1);
+  --tertiary: rgba(173, 173, 173, 1);
+  --text: rgba(4, 4, 3, 1);
+  --accent: rgba(207, 227, 237, 1);
+}
+
 .app {
-  color: grey;
+  color: var(--primary);
 }
 
 .editor {
@@ -13,7 +22,7 @@
 }
 
 .componentPalette {
-  background: rgba(0,0,0,.2);
+  background: var(--secondary);
   padding: 10px;
   display: flex;
   justify-content: center;
@@ -33,33 +42,27 @@
   background: rgba(0, 0, 0, .1);
 }
 
-.column {
-  display: inline-block;
-  background-color: rgba(0, 0, 0, 0.01);
-  height: 100%;
-  width: 100%;
-  border-left: rgba(0, 0, 0, 0.02) 1px solid;
-
-    -ms-flex: 0 0 calc(8.333333% - 1px);
-    flex: 0 0 calc(8.333333% - 1px);
-    max-width: calc(8.333333% - 1px);
-}
-
-.column:first-of-type{
-  border-left: none;
-}
-
-.grid {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  background: rgba(173, 216, 230, 1.0);
-}
-
-.hovering {
-  background: rgba(255, 105, 108, 0.5);
+.node {
+  background: var(--primary);
+  display: flex;
+  flex-grow: 1;
+  align-items: stretch;
+  margin: 15px;
 }
 
 .selected {
-  background: fuchsia;
+  border: solid 2px var(--accent);
+}
+
+.palette-element {
+  display: inline-block;
+  border-radius: 2px;
+  background: var(--accent);
+  padding: 5px 10px;
+  color: var(--primary);
+  cursor: -webkit-grab;
+}
+
+.hovering {
+  background: var(--accent);
 }

@@ -38,27 +38,17 @@ type ComponentState = OmitType<HTMLNode, Function> & {
   isSelected: boolean;
 };
 
+const createRandomRBGVal = () => Math.floor(Math.random() * 256);
+const createRandomColor = () => `rgb(${ createRandomRBGVal() }, ${ createRandomRBGVal() }, ${ createRandomRBGVal() })`;
+
 const logDrop = (text: string) =>
   console.log(`Drop recorded over element: ${ text }`);
-
-const defaultStyle: React.CSSProperties = {
-  background: 'yellow',
-  margin: '15px',
-  border: 'solid 2px black',
-  display: 'flex',
-  flexGrow: 1,
-  alignItems: 'stretch',
-};
-const selectedStyle: React.CSSProperties = {
-  ...defaultStyle,
-  background: 'fushia',
-};
 
 const elementTarget = {
   drop(props: AllComponentProps, monitor: DropTargetMonitor) {
     if (!monitor.didDrop()) {
       const droppedItem = monitor.getItem() as SourceProps;
-      addHTMLNode(props.node.id, droppedItem.tag, { style: defaultStyle });
+      addHTMLNode(props.node.id, droppedItem.tag, { style: { background: createRandomColor() } });
       logDrop(droppedItem.tag);
     }
   },
@@ -113,7 +103,7 @@ class Element extends React.Component<AllComponentProps, ComponentState> {
 
     toggleSelectedNode(id);
     this.setState({ isSelected: !wasSelected });
-    updateNodeStyle(id, this.state.isSelected ? selectedStyle : defaultStyle);
+    // updateNodeStyle(id, this.state.isSelected ? selectedStyle : defaultStyle);
 
     console.log('onClick hit');
   }
@@ -134,7 +124,7 @@ class Element extends React.Component<AllComponentProps, ComponentState> {
     return connectDropTarget(
       // @ts-ignore https://github.com/Microsoft/TypeScript/issues/28892
       <CustomTag
-        className={ `element${ isOver ? ' hovering' : '' } ${ isSelected ? ' selected' : '' }` }
+        className={ `node${ isOver ? ' hovering' : '' } ${ isSelected ? ' selected' : '' }` }
         onClick={ this.onClick }
         { ...attrs }
       >

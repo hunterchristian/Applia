@@ -41,7 +41,7 @@ const Element = (({
   connectDragSource(<div className={ 'palette-element' } style={{
     opacity: isDragging ? 0.5 : 1,
   }}>
-    { tag }
+    { `<${ tag }>` }
   </div>)
 ));
 

@@ -6,6 +6,7 @@ export type Tag = 'a' | 'abbr' | 'address' | 'area' | 'article' | 'aside' | 'aud
 export class HTMLNode {
   attrs: React.HTMLAttributes<HTMLElement>;
   children: HTMLNode[];
+  classes: Set<string>;
   id: string;
   tag: Tag;
 
@@ -14,6 +15,7 @@ export class HTMLNode {
     this.children = [];
     this.id = uuid();
     this.tag = tag;
+    this.classes = new Set();
   }
 
   addChild(child: HTMLNode) {

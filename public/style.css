@@ -71,7 +71,7 @@
 }
 
 .selected {
-  border: solid 2px var(--accent);
+  border: solid 4px var(--accent);
 }
 
 .palette-element {

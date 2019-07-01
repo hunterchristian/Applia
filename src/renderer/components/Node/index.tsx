@@ -117,7 +117,7 @@ class Element extends React.Component<AllComponentProps, ComponentState> {
     return connectDropTarget(
       // @ts-ignore https://github.com/Microsoft/TypeScript/issues/28892
       <CustomTag
-        className={ `${ [...classes].join(' ') }${ isOver ? 'hovering ' : ' ' }node` }
+        className={ `${ [...classes].join(' ') }${ isOver ? ' hovering ' : ' ' }node` }
         onClick={ this.onClick }
         { ...attrs }
       >

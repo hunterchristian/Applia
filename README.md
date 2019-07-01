@@ -1,4 +1,6 @@
 # Applia
+A drag-and-drop editor for creating web applications.
+
 Build status: [![Heroku CI Status](https://draftr-ci-badge.herokuapp.com/last.svg)](https://dashboard.heroku.com/pipelines/58c72a49-0551-4b94-bda4-30f4ddf203fc/tests)
 
 _Created using the following boilerplate: https://github.com/Devtography/electron-react-typescript-webpack-boilerplate_

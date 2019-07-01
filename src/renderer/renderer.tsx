@@ -7,7 +7,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import * as ReactDOM from 'react-dom';
 
 import { ComponentPalette } from '@components/ComponentPalette';
-import { DroppableElement } from '@components/Element';
+import { DroppableElement } from '@components/Node';
 import { HTMLNode } from '@models/HTMLNode';
 // Import the styles here to process them with webpack
 import '@public/style.css';
@@ -29,11 +29,10 @@ const DnDEnabledApp = DragDropContext(HTML5Backend)(App);
 
 state.registerObserver(
   state.rootNode.id,
-  node => (
+  node =>
     ReactDOM.render(
       <DnDEnabledApp rootNode={ node } />,
       document.getElementById('app')
-    )
-  ),
+    ),
   { shouldInitialize: true }
 );

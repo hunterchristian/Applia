@@ -15,7 +15,7 @@ const createRootNode = (): HTMLNode =>
   new HTMLNode('div', { style: {
     display: 'flex',
     flex: 1,
-    background: 'red',
+    margin: 0,
   }});
 
 class State {

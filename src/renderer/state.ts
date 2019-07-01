@@ -6,6 +6,8 @@ import {
   Tag,
 } from '@models/HTMLNode';
 
+const SELECTED = 'selected';
+
 type Observer = (rootNode: HTMLNode) => void;
 interface RegisterObserverOptions {
   shouldInitialize: boolean;
@@ -98,15 +100,24 @@ class State {
   }
 
   @logAction
-  toggleSelectedNode(nodeId: string) {
-    if (this.selectedNode && this.selectedNode.id === nodeId) {
+  toggleSelectedNode(toggledId: string) {
+    // The node being toggled is the currently selected node
+    if (this.selectedNode && this.selectedNode.id === toggledId) {
+      this.selectedNode.classes.delete(SELECTED);
+      this.notifyObserver(this.selectedNode.id);
       this.selectedNode = null;
 
       return;
     }
-    const node = this.getNode(nodeId);
-    this.selectedNode = node;
-    this.notifyObserver(nodeId);
+    // If a selected node exists, deselect it
+    if (this.selectedNode) {
+      this.selectedNode.classes.delete(SELECTED);
+      this.notifyObserver(this.selectedNode.id);
+    }
+    const newSelectedNode = this.getNode(toggledId);
+    newSelectedNode.classes.add(SELECTED);
+    this.selectedNode = newSelectedNode;
+    this.notifyObserver(toggledId);
   }
 
   @logAction

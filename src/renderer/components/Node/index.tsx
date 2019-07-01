@@ -19,7 +19,6 @@ const {
   registerObserver,
   removeObserver,
   toggleSelectedNode,
-  updateNodeStyle,
 } = state;
 
 interface CollectedProps {
@@ -96,16 +95,9 @@ class Element extends React.Component<AllComponentProps, ComponentState> {
   }
 
   onClick = (event: MouseEvent) => {
-    event.preventDefault();
-
+    event.stopPropagation();
     const { id } = this.props.node;
-    const wasSelected = this.state.isSelected;
-
     toggleSelectedNode(id);
-    this.setState({ isSelected: !wasSelected });
-    // updateNodeStyle(id, this.state.isSelected ? selectedStyle : defaultStyle);
-
-    console.log('onClick hit');
   }
 
   render() {
@@ -116,6 +108,7 @@ class Element extends React.Component<AllComponentProps, ComponentState> {
     const {
       attrs,
       children,
+      classes,
       isSelected,
       tag,
     } = this.state;
@@ -124,7 +117,7 @@ class Element extends React.Component<AllComponentProps, ComponentState> {
     return connectDropTarget(
       // @ts-ignore https://github.com/Microsoft/TypeScript/issues/28892
       <CustomTag
-        className={ `node${ isOver ? ' hovering' : '' } ${ isSelected ? ' selected' : '' }` }
+        className={ `${ [...classes].join(' ') }${ isOver ? 'hovering ' : ' ' }node` }
         onClick={ this.onClick }
         { ...attrs }
       >

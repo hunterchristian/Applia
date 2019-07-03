@@ -97,3 +97,9 @@ electron-react-typescript-base-proj/
 | - tslint.json         //- TSLint config
 | - webpack.config.js   //- Webpack config
 ```
+
+## Debugging
+Press `ctrl+option+i` to open the Chrome dev tools and inspect the application.
+
+### Devtron
+Devtron is an open source tool to help inspect, monitor, and debug an Electron app. It can be accessed by opening Chrome developer tools and clicking on the "Devtron" tab. Debugging with Devtron is explained in further detail here: https://electronjs.org/devtron 

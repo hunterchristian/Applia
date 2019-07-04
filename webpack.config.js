@@ -1,6 +1,7 @@
 const lodash = require('lodash');
 const CopyPkgJsonPlugin = require('copy-pkg-json-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackShellPlugin = require('webpack-shell-plugin');
 const path = require('path');
 
 function srcPaths(src) {
@@ -82,6 +83,9 @@ mainConfig.plugins = [
       postinstall: 'electron-builder install-app-deps',
     },
   }),
+  new WebpackShellPlugin({
+    onBuildEnd: ['cp src/main/preload.js dist/preload.js']
+  })
 ];
 
 const rendererConfig = lodash.cloneDeep(commonConfig);

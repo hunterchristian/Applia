@@ -1,7 +1,11 @@
 /**
  * Entry point of the Election app.
  */
-import { app, BrowserWindow } from 'electron';
+import {
+  app,
+  BrowserWindow,
+  BrowserWindowConstructorOptions,
+} from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
@@ -9,15 +13,18 @@ let mainWindow: Electron.BrowserWindow | null;
 
 function createWindow(): void {
     // Create the browser window.
-    mainWindow = new BrowserWindow({
-        height: 600,
-        width: 800,
-        titleBarStyle: 'hidden',
-        webPreferences: {
-            webSecurity: false,
-            devTools: process.env.NODE_ENV === 'production' ? false : true,
-        },
-    });
+    const options: BrowserWindowConstructorOptions = {
+      height: 600,
+      width: 800,
+      webPreferences: {
+          webSecurity: true,
+          devTools: process.env.NODE_ENV === 'production' ? false : true,
+      },
+    };
+    if (process.env.NODE_ENV !== 'production') {
+      options.webPreferences!.preload = path.resolve(__dirname, 'preload.js');
+    }
+    mainWindow = new BrowserWindow(options);
 
     // And load the index.html of the app.
     mainWindow.loadURL(
@@ -26,7 +33,7 @@ function createWindow(): void {
             protocol: 'file:',
             slashes: true,
         })
-    );
+    ).catch(error => console.log(`Failed to load BrowserWindow, error: ${ error }`));
 
     // Emitted when the window is closed.
     mainWindow.on('closed', () => {

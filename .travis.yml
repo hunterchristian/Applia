@@ -13,6 +13,6 @@ jobs:
       name: "Run unit tests"
       script: yarn test:unit
     - stage: "Release"
-      name: "Build and publish binaries"
-      script: yarn release
+      name: "Build binaries"
+      script: yarn bundle:prod && yarn release
 

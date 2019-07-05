@@ -1,5 +1,16 @@
 language: node_js
 node_js:
   - 10.16.0
-script:
-  - "yarn build"
+
+jobs:
+  include:
+    - stage: "Build"
+      name: "Compile and lint"
+      script: yarn build
+    - stage: "Test"
+      name: "Run unit tests"
+      script: yarn test:unit
+    - stage: "Release"
+      name: "Build binary for OSX"
+      script: yarn release:mac
+

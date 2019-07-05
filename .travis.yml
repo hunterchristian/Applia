@@ -1,5 +1,14 @@
 language: node_js
 node_js:
   - 10.16.0
+
+addons:
+  chrome: stable # Install chrome stable on operating systems
+
+# A list of operating systems which are used for tests
+os: osx
+
 script:
-  - "yarn build"
+  - "yarn build:prod"
+  - "yarn release:mac"
+  - "yarn test:func"

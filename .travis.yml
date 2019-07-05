@@ -12,6 +12,5 @@ jobs:
       script: yarn test:unit
     - stage: "Release"
       name: "Build binary for OSX"
-      script: yarn build:prod
-      script: yarn release:mac
+      script: yarn release:mac:ci
 

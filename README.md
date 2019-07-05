@@ -73,6 +73,18 @@ Builds for Linux, armv71, and arm64 can also be configured by modifying the
 build scripts in `package.json`, but those aren't tested yet. For details, 
 please refer to [documents of `electron-builder`](https://www.electron.build/cli).
 
+## Releasing an update
+To release an updated version of the application, [follow the recommended release workflow for electron-builder.](https://www.electron.build/configuration/publish#recommended-github-releases-workflow).
+> 1. Draft a new release. Set the “Tag version” to the value of version in your application package.json, and prefix it with v. “Release title” can be anything you want. For example, if your application package.json version is 1.0, your draft’s “Tag version” would be v1.0.
+>
+> 2. Push some commits. Every CI build will update the artifacts attached to this draft.
+>
+> 3. Once you are done, publish the release. GitHub will tag the latest commit for you.
+>The benefit of this workflow is that it allows you to always have the latest artifacts, and the release can be published once it is ready.
+
+TODO: implement auto update
+Once a release has been published, users will receive the new version via an [auto-update module (electron-updater).](https://www.electron.build/auto-update#private-github-update-repo)
+
 ## Folder structure
 ```
 electron-react-typescript-base-proj/

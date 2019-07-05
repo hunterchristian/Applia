@@ -11,4 +11,5 @@ os: osx
 script:
   - "yarn build:prod"
   - "yarn release:mac"
+  - "ls ./out/mac/Applia.app/Contents/MacOS/"
   - "yarn test:func"

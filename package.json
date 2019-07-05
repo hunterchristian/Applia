@@ -5,7 +5,7 @@
   "main": "./dist/main.bundle.js",
   "scripts": {
     "init": "yarn && git config core.hooksPath .githooks",
-    "build:dev": "rimraf dist && cross-env NODE_ENV=development webpack --watch --progress --colors",
+    "build:dev": "rimraf dist && cross-env NODE_ENV=development webpack --progress --colors",
     "build:prod": "rimraf dist && cross-env NODE_ENV=production webpack --progress --colors",
     "build": "yarn build:prod && yarn test:unit",
     "start": "electron ./dist/main.bundle.js",

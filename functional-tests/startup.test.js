@@ -1,12 +1,8 @@
-const Application = require('spectron').Application;
+const startApp = require('./util/startApp');
 
 describe('Application launch', () => {
   beforeAll(async () => {
-     this.app = new Application({
-        path: './out/mac/Applia.app/Contents/MacOS/Applia',
-     });
-
-     await this.app.start();
+    this.app = await startApp();
   });
   afterAll(async () => {
      if (this.app && this.app.isRunning()) {

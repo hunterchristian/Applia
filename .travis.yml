@@ -6,11 +6,12 @@ jobs:
   include:
     - stage: "Build"
       name: "Compile and lint"
-      script: yarn build
+      script: yarn build:prod
     - stage: "Test"
       name: "Run unit tests"
       script: yarn test:unit
     - stage: "Release"
       name: "Build binary for OSX"
+      script: yarn build:prod
       script: yarn release:mac
 

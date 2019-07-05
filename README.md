@@ -82,7 +82,6 @@ To release an updated version of the application, [follow the recommended releas
 > 3. Once you are done, publish the release. GitHub will tag the latest commit for you.
 >The benefit of this workflow is that it allows you to always have the latest artifacts, and the release can be published once it is ready.
 
-TODO: implement auto update
 Once a release has been published, users will receive the new version via an [auto-update module (electron-updater).](https://www.electron.build/auto-update#private-github-update-repo)
 
 ## Folder structure

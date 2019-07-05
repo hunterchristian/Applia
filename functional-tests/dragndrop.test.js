@@ -1,7 +1,7 @@
 const Application = require('spectron').Application;
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-const elementExists = elem => !!elem.value.ELEMENT;
+const elementExists = elem => !!elem.value;
 
 describe('Application launch', () => {
   beforeAll(async () => {

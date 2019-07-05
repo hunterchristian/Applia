@@ -12,8 +12,8 @@
     "test:unit": "jest src",
     "test:func": "jest functional-tests",
     "test": "jest",
-    "release:win": "electron-builder build --win --x64",
-    "release:mac": "electron-builder build --mac --x64",
+    "release:win": "electron-builder build --win --x64 --publish=never",
+    "release:mac": "electron-builder build --mac --x64 --publish=never",
     "release": "yarn release:win && yarn release:mac",
     "lint:fix": "./node_modules/tslint/bin/tslint --fix --project tsconfig.json --config tslint.json \"src/**/*.{ts,tsx}\"",
     "lint": "./node_modules/tslint/bin/tslint --project tsconfig.json --config tslint.json \"src/**/*.{ts,tsx}\""

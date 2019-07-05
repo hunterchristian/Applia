@@ -2,6 +2,8 @@ language: node_js
 node_js:
   - 10.16.0
 
+os: osx
+
 jobs:
   include:
     - stage: "Build"

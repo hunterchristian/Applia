@@ -10,7 +10,7 @@ jobs:
       name: "Run unit tests"
       script: yarn test:unit
     - stage: "Release"
-      name: "Build"
+      name: "Create bundle and build binary"
       if: branch = master AND type = push
       script: yarn bundle:prod && yarn release
       if: branch != master OR type != push

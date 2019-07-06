@@ -5,17 +5,28 @@ node_js:
 os:
   - osx
   - windows
-jobs:
+matrix:
   include:
     - stage: "Test"
       name: "Run unit tests"
+      os: osx
       script: yarn test:unit
     - stage: "Release"
       name: "Create bundle and build binary"
       if: branch = master AND type = push
       script: yarn bundle:prod && yarn release
       if: branch != master OR type != push
-      script:
-       - if [ "$TRAVIS_OS_NAME" = "osx" ]; then yarn bundle:prod && yarn test-release:mac; fi
-       - if [ "$TRAVIS_OS_NAME" = "windows" ]; then yarn bundle:prod && yarn test-release:win; fi
+      os: osx
+      script: yarn bundle:prod && yarn test-release:mac
+    - stage: "Test"
+      name: "Run unit tests"
+      os: windows
+      script: yarn test:unit
+    - stage: "Release"
+      name: "Create bundle and build binary"
+      if: branch = master AND type = push
+      script: yarn bundle:prod && yarn release
+      if: branch != master OR type != push
+      os: windows
+      script: yarn bundle:prod && yarn test-release:mac
 

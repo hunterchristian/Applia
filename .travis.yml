@@ -1,18 +1,17 @@
 language: node_js
 node_js:
   - 10.16.0
-
-os: osx
-
-jobs:
-  include:
-    - stage: "Test"
-      name: "Run unit tests"
-      script: yarn test:unit
-    - stage: "Release"
-      name: "Create bundle and build binary"
-      if: branch = master AND type = push
-      script: yarn bundle:prod && yarn release
-      if: branch != master OR type != push
-      script: yarn bundle:prod && yarn test-release:mac
+os:
+  - osx
+  - windows
+script:
+  - yarn test:unit
+  if: branch = master AND type = push
+  - yarn bundle:prod && yarn release
+  if: branch != master OR type != push
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then yarn bundle:prod && yarn test-release:mac; fi
+  if: branch != master OR type != push
+  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then yarn bundle:prod && yarn test-release:win; fi
+      
+      
 

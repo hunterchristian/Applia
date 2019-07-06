@@ -10,6 +10,7 @@
     "start": "electron ./dist/main.bundle.js",
     "test:unit": "jest src",
     "test:func": "jest functional-tests",
+    "test": "test:unit",
     "test-release:win": "yarn bundle:prod && electron-builder build --win --x64 --publish=never",
     "test-release:mac": "yarn bundle:prod && electron-builder build --mac --x64 --publish=never",
     "release": "build",

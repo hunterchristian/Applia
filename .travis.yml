@@ -6,13 +6,13 @@ os: osx
 
 jobs:
   include:
-    - stage: "Bundle"
-      name: "Bundle and lint code"
-      script: yarn bundle:prod
     - stage: "Test"
       name: "Run unit tests"
       script: yarn test:unit
     - stage: "Release"
-      name: "Build binaries"
+      name: "Build"
+      if: branch = master AND type = push
       script: yarn bundle:prod && yarn release
+      if: branch != master OR type != push
+      script: yarn bundle:prod && yarn test-release:mac
 

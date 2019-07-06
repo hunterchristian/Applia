@@ -2,8 +2,9 @@ language: node_js
 node_js:
   - 10.16.0
 
-os: osx
-
+os:
+  - osx
+  - windows
 jobs:
   include:
     - stage: "Test"
@@ -14,5 +15,7 @@ jobs:
       if: branch = master AND type = push
       script: yarn bundle:prod && yarn release
       if: branch != master OR type != push
-      script: yarn bundle:prod && yarn test-release:mac
+      script:
+       - if [ "$TRAVIS_OS_NAME" = "osx" ]; then yarn bundle:prod && yarn test-release:mac; fi
+       - if [ "$TRAVIS_OS_NAME" = "windows" ]; then yarn bundle:prod && yarn test-release:win; fi
 

@@ -1,9 +1,11 @@
+const config = require('./config');
+
 const Application = require('spectron').Application;
 
 describe('Application launch', () => {
   beforeAll(async () => {
      this.app = new Application({
-        path: './out/mac/Applia.app/Contents/MacOS/Applia',
+        path: config.appPath,
      });
 
      await this.app.start();

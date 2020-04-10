@@ -2,20 +2,20 @@ const config = require('./config');
 
 const Application = require('spectron').Application;
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-const elementExists = elem => !!elem.value.ELEMENT;
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const elementExists = (elem) => !!elem.value.ELEMENT;
 
 describe('Application launch', () => {
   beforeAll(async () => {
     this.app = new Application({
       path: config.execPath,
     });
-     await this.app.start();
+    await this.app.start();
   });
   afterAll(async () => {
-     if (this.app && this.app.isRunning()) {
-        await this.app.stop();
-     }
+    if (this.app && this.app.isRunning()) {
+      await this.app.stop();
+    }
   });
 
   it('should drag and element from the palette and drop it on the canvas', async () => {

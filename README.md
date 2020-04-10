@@ -1,4 +1,5 @@
 # Applia
+
 A drag-and-drop editor for creating web applications.
 
 [![Build Status](https://travis-ci.com/hunterchristian/Applia.svg?token=qLzSkFjss8AyEky4m4yq&branch=master)](https://travis-ci.com/hunterchristian/Applia)
@@ -6,53 +7,64 @@ A drag-and-drop editor for creating web applications.
 _Created using the following boilerplate: https://github.com/Devtography/electron-react-typescript-webpack-boilerplate_
 
 ## Getting started
+
 ### Local development
-1. __Clone down the repository__
-    ```
-    git clone git@github.com:hunterchristian/Applia.git
-    ```
-2. __Install project dependencies and configure git hooks__
-    ```
-    cd Applia
-    yarn init
-    ```
-3. __Build the code.__ This will run webpack in "watch" mode, which will re-trigger the build whenever changes to source files are detected. This step should not be confused with "yarn release", which takes the output of the build and packages it into an installer.
-  
-    To build the code with sourcemaps and other options which are helpful for local debugging:
-    ```
-    yarn build:dev
-    ```
 
-    To build an optimized version of the code for production use:
-    ```
-    yarn build:prod
-    ```
+1. **Clone down the repository**
+   ```
+   git clone git@github.com:hunterchristian/Applia.git
+   ```
+2. **Install project dependencies and configure git hooks**
+   ```
+   cd Applia
+   yarn init
+   ```
+3. **Build the code.** This will run webpack in "watch" mode, which will re-trigger the build whenever changes to source files are detected. This step should not be confused with "yarn release", which takes the output of the build and packages it into an installer.
 
-4. __Run the output of the build.__ This will need to be performed in a separate terminal window, since the `yarn build:dev` process will be running in the current terminal window (process does not exit since it watches the source files).
-    ```
-    yarn start
-    ```
+   To build the code with sourcemaps and other options which are helpful for local debugging:
+
+   ```
+   yarn build:dev
+   ```
+
+   To build an optimized version of the code for production use:
+
+   ```
+   yarn build:prod
+   ```
+
+4. **Run the output of the build.** This will need to be performed in a separate terminal window, since the `yarn build:dev` process will be running in the current terminal window (process does not exit since it watches the source files).
+   ```
+   yarn start
+   ```
+
 ### Building the installer
+
 The installer is what users will run to install the application on their machines. It is created with [electron-builder](https://github.com/electron-userland/electron-builder).
 
 For macOS, execute:
-  ```bash
-  yarn release:mac
-  ```
+
+```bash
+yarn release:mac
+```
 
 For Windows, execute:
-  ```bash
-  yarn release:win
-  ```
-_** `asar` archiving is disabled by default in Windows build as it can cause 
-errors while running the installed Electron app based on previous experiences, 
-whereas the macOS build with `asar` enabled works just fine. You can turn it 
+
+```bash
+yarn release:win
+```
+
+_** `asar` archiving is disabled by default in Windows build as it can cause
+errors while running the installed Electron app based on previous experiences,
+whereas the macOS build with `asar` enabled works just fine. You can turn it
 back on by removing line 23 (`"asar": false`) in `package.json`. **_
 
 #### Extra options
-The release scripts are pre-configured to build 64 bit installers, since 64 bit 
-is the standard for modern applications. 32 bit builds are still 
+
+The release scripts are pre-configured to build 64 bit installers, since 64 bit
+is the standard for modern applications. 32 bit builds are still
 possible by changing the build scripts in `package.json` in the following way:
+
 ```json
 // from
 "scripts": {
@@ -69,22 +81,25 @@ possible by changing the build scripts in `package.json` in the following way:
 },
 ```
 
-Builds for Linux, armv71, and arm64 can also be configured by modifying the 
-build scripts in `package.json`, but those aren't tested yet. For details, 
+Builds for Linux, armv71, and arm64 can also be configured by modifying the
+build scripts in `package.json`, but those aren't tested yet. For details,
 please refer to [documents of `electron-builder`](https://www.electron.build/cli).
 
 ## Releasing an update
+
 To release an updated version of the application, [follow the recommended release workflow for electron-builder.](https://www.electron.build/configuration/publish#recommended-github-releases-workflow).
+
 > 1. Draft a new release. Set the “Tag version” to the value of version in your application package.json, and prefix it with v. “Release title” can be anything you want. For example, if your application package.json version is 1.0, your draft’s “Tag version” would be v1.0.
 >
 > 2. Push some commits. Every CI build will update the artifacts attached to this draft.
 >
 > 3. Once you are done, publish the release. GitHub will tag the latest commit for you.
->The benefit of this workflow is that it allows you to always have the latest artifacts, and the release can be published once it is ready.
+>    The benefit of this workflow is that it allows you to always have the latest artifacts, and the release can be published once it is ready.
 
 Once a release has been published, users will receive the new version via an [auto-update module (electron-updater).](https://www.electron.build/auto-update#private-github-update-repo)
 
 ## Folder structure
+
 ```
 electron-react-typescript-base-proj/
 | - dist/               //- Generated by build:dev and build:prod (Webpack) automatically
@@ -110,7 +125,9 @@ electron-react-typescript-base-proj/
 ```
 
 ## Debugging
+
 Press `ctrl+option+i` to open the Chrome dev tools and inspect the application.
 
 ### Devtron
-Devtron is an open source tool to help inspect, monitor, and debug an Electron app. It can be accessed by opening Chrome developer tools and clicking on the "Devtron" tab. Debugging with Devtron is explained in further detail here: https://electronjs.org/devtron 
+
+Devtron is an open source tool to help inspect, monitor, and debug an Electron app. It can be accessed by opening Chrome developer tools and clicking on the "Devtron" tab. Debugging with Devtron is explained in further detail here: https://electronjs.org/devtron

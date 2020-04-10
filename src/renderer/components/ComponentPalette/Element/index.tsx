@@ -22,7 +22,10 @@ export interface SourceProps {
 
 type AllComponentProps = OwnProps & DragProps;
 
-const mapDragProps = (connect: DragSourceConnector, monitor: DragSourceMonitor): DragProps => ({
+const mapDragProps = (
+  connect: DragSourceConnector,
+  monitor: DragSourceMonitor
+): DragProps => ({
   connectDragSource: connect.dragSource(),
   isDragging: monitor.isDragging(),
 });
@@ -33,17 +36,23 @@ const mapDragProps = (connect: DragSourceConnector, monitor: DragSourceMonitor):
 const elementSource = {
   beginDrag: (props: AllComponentProps): SourceProps => ({ tag: props.tag }),
 };
-const Element = (({
-  connectDragSource,
-  isDragging,
-  tag,
-}: AllComponentProps) => (
-  connectDragSource(<div className={ 'palette-element' } style={{
-    opacity: isDragging ? 0.5 : 1,
-  }}>
-    { `<${ tag }>` }
-  </div>)
-));
+const Element = ({ connectDragSource, isDragging, tag }: AllComponentProps) =>
+  connectDragSource(
+    <div
+      className={'palette-element'}
+      style={{
+        opacity: isDragging ? 0.5 : 1,
+      }}
+    >
+      {`<${tag}>`}
+    </div>
+  );
 
-const makeDraggable = DragSource(ItemTypes.ELEMENT, elementSource, mapDragProps);
-export const DraggableElement = makeDraggable(Element) as React.ComponentType<OwnProps>;
+const makeDraggable = DragSource(
+  ItemTypes.ELEMENT,
+  elementSource,
+  mapDragProps
+);
+export const DraggableElement = makeDraggable(Element) as React.ComponentType<
+  OwnProps
+>;

@@ -10,11 +10,13 @@
     "start": "electron ./dist/main.bundle.js",
     "test:unit": "jest src",
     "test:func": "jest functional-tests",
+    "test": "npm run test:unit && npm run test:func",
     "test-release:win": "yarn bundle:prod && electron-builder build --win --x64 --publish=never",
     "test-release:mac": "yarn bundle:prod && electron-builder build --mac --x64 --publish=never",
     "release": "build",
     "lint:fix": "./node_modules/tslint/bin/tslint --fix --project tsconfig.json --config tslint.json \"src/**/*.{ts,tsx}\"",
-    "lint": "./node_modules/tslint/bin/tslint --project tsconfig.json --config tslint.json \"src/**/*.{ts,tsx}\""
+    "lint": "./node_modules/tslint/bin/tslint --project tsconfig.json --config tslint.json \"src/**/*.{ts,tsx}\"",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
   },
   "build": {
     "appId": "com.electron.applia",
@@ -27,10 +29,14 @@
     "win": {
       "target": "nsis",
       "asar": false,
-      "publish": ["github"]
+      "publish": [
+        "github"
+      ]
     },
     "mac": {
-      "publish": ["github"]
+      "publish": [
+        "github"
+      ]
     },
     "publish": {
       "provider": "github"
@@ -67,6 +73,7 @@
     "auto-bind": "^2.1.0",
     "devtron": "^1.4.0",
     "electron-updater": "^4.0.14",
+    "prettier": "^2.0.4",
     "react": "^16.7.0",
     "react-dnd": "^7.4.5",
     "react-dnd-html5-backend": "^7.4.4",

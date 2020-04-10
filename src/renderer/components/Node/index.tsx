@@ -38,32 +38,37 @@ type ComponentState = OmitType<HTMLNode, Function> & {
 };
 
 const createRandomRBGVal = () => Math.floor(Math.random() * 256);
-const createRandomColor = () => `rgb(${ createRandomRBGVal() }, ${ createRandomRBGVal() }, ${ createRandomRBGVal() })`;
+const createRandomColor = () =>
+  `rgb(${createRandomRBGVal()}, ${createRandomRBGVal()}, ${createRandomRBGVal()})`;
 
 const logDrop = (text: string) =>
-  console.log(`Drop recorded over element: ${ text }`);
+  console.log(`Drop recorded over element: ${text}`);
 
 const elementTarget = {
   drop(props: AllComponentProps, monitor: DropTargetMonitor) {
     if (!monitor.didDrop()) {
       const droppedItem = monitor.getItem() as SourceProps;
-      addHTMLNode(props.node.id, droppedItem.tag, { style: { background: createRandomColor() } });
+      addHTMLNode(props.node.id, droppedItem.tag, {
+        style: { background: createRandomColor() },
+      });
       logDrop(droppedItem.tag);
     }
   },
 };
 
-const collect: DropTargetCollector<CollectedProps, OwnProps> =
-  (connect: DropTargetConnector, monitor: DropTargetMonitor) => ({
-    connectDropTarget: connect.dropTarget(),
-    isOver: monitor.isOver(),
-  });
+const collect: DropTargetCollector<CollectedProps, OwnProps> = (
+  connect: DropTargetConnector,
+  monitor: DropTargetMonitor
+) => ({
+  connectDropTarget: connect.dropTarget(),
+  isOver: monitor.isOver(),
+});
 
 const renderNode = (node: HTMLNode): JSX.Element => (
-    <DroppableElement key={ node.id } node={ node }>
-      { node.children.map(renderNode) }
-    </DroppableElement>
-  );
+  <DroppableElement key={node.id} node={node}>
+    {node.children.map(renderNode)}
+  </DroppableElement>
+);
 
 class Element extends React.Component<AllComponentProps, ComponentState> {
   constructor(props: AllComponentProps) {
@@ -98,34 +103,33 @@ class Element extends React.Component<AllComponentProps, ComponentState> {
     event.stopPropagation();
     const { id } = this.props.node;
     toggleSelectedNode(id);
-  }
+  };
 
   render() {
-    const {
-      connectDropTarget,
-      isOver,
-    } = this.props;
-    const {
-      attrs,
-      children,
-      classes,
-      isSelected,
-      tag,
-    } = this.state;
+    const { connectDropTarget, isOver } = this.props;
+    const { attrs, children, classes, isSelected, tag } = this.state;
     const CustomTag = tag;
 
     return connectDropTarget(
       // @ts-ignore https://github.com/Microsoft/TypeScript/issues/28892
       <CustomTag
-        className={ `${ [...classes].join(' ') }${ isOver ? ' hovering ' : ' ' }node` }
-        onClick={ this.onClick }
-        { ...attrs }
+        className={`${[...classes].join(' ')}${
+          isOver ? ' hovering ' : ' '
+        }node`}
+        onClick={this.onClick}
+        {...attrs}
       >
-        { children.map(renderNode) }
+        {children.map(renderNode)}
       </CustomTag>
     );
   }
 }
 
-const makeDroppable = DropTarget<OwnProps, CollectedProps>(ItemTypes.ELEMENT, elementTarget, collect);
-export const DroppableElement = makeDroppable(Element) as React.ComponentType<OwnProps>;
+const makeDroppable = DropTarget<OwnProps, CollectedProps>(
+  ItemTypes.ELEMENT,
+  elementTarget,
+  collect
+);
+export const DroppableElement = makeDroppable(Element) as React.ComponentType<
+  OwnProps
+>;

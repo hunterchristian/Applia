@@ -38,21 +38,25 @@ const commonConfig = {
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [{
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'fonts/'
-          }
-        }]
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/',
+            },
+          },
+        ],
       },
       {
         test: /\.(ts|tsx)$/,
         enforce: 'pre',
-        use: [{
-          loader: 'tslint-loader',
-          options: { typeCheck: true },
-        }]
+        use: [
+          {
+            loader: 'tslint-loader',
+            options: { typeCheck: true },
+          },
+        ],
       },
       {
         test: /\.(scss|css)$/,
@@ -84,8 +88,8 @@ mainConfig.plugins = [
     },
   }),
   new WebpackShellPlugin({
-    onBuildEnd: ['cp src/main/preload.js dist/preload.js']
-  })
+    onBuildEnd: ['cp src/main/preload.js dist/preload.js'],
+  }),
 ];
 
 const rendererConfig = lodash.cloneDeep(commonConfig);

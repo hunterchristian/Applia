@@ -19,9 +19,9 @@ interface OwnProps {
 }
 
 const App = (props: OwnProps) => (
-  <div className={ 'editor' }>
+  <div className={'editor'}>
     <ComponentPalette />
-    <DroppableElement node={ props.rootNode } />
+    <DroppableElement node={props.rootNode} />
   </div>
 );
 
@@ -29,9 +29,9 @@ const DnDEnabledApp = DragDropContext(HTML5Backend)(App);
 
 state.registerObserver(
   state.rootNode.id,
-  node =>
+  (node) =>
     ReactDOM.render(
-      <DnDEnabledApp rootNode={ node } />,
+      <DnDEnabledApp rootNode={node} />,
       document.getElementById('app')
     ),
   { shouldInitialize: true }

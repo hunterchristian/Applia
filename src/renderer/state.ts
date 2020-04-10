@@ -1,10 +1,7 @@
 import autobind from 'auto-bind';
 
 import { logAction } from '@decorators/logAction';
-import {
-  HTMLNode,
-  Tag,
-} from '@models/HTMLNode';
+import { HTMLNode, Tag } from '@models/HTMLNode';
 
 const SELECTED = 'selected';
 
@@ -14,11 +11,13 @@ interface RegisterObserverOptions {
 }
 
 const createRootNode = (): HTMLNode =>
-  new HTMLNode('div', { style: {
-    display: 'flex',
-    flex: 1,
-    margin: 0,
-  }});
+  new HTMLNode('div', {
+    style: {
+      display: 'flex',
+      flex: 1,
+      margin: 0,
+    },
+  });
 
 class State {
   static instance: Nullable<State> = null;
@@ -39,7 +38,11 @@ class State {
   }
 
   @logAction
-  addHTMLNode(parentId: string, tag: Tag, attrs: React.HTMLAttributes<HTMLElement>) {
+  addHTMLNode(
+    parentId: string,
+    tag: Tag,
+    attrs: React.HTMLAttributes<HTMLElement>
+  ) {
     const parent = this.getNode(parentId);
     const newNode = new HTMLNode(tag, attrs);
     parent.addChild(newNode);
@@ -60,7 +63,7 @@ class State {
   getNode(nodeId: string) {
     const node = this.nodeStore.get(nodeId);
     if (!node) {
-      throw new Error(`Could not find CanvasNode for given id: ${ nodeId }`);
+      throw new Error(`Could not find CanvasNode for given id: ${nodeId}`);
     }
 
     return node;
@@ -70,10 +73,10 @@ class State {
     const observer = this.observers.get(nodeId);
     const node = this.nodeStore.get(nodeId);
     if (!observer) {
-      throw new Error(`Could not find observer for given nodeId: ${ nodeId }`);
+      throw new Error(`Could not find observer for given nodeId: ${nodeId}`);
     }
     if (!node) {
-      throw new Error(`Could not find node for given nodeId: ${ nodeId }`);
+      throw new Error(`Could not find node for given nodeId: ${nodeId}`);
     }
 
     return { observer, node };
@@ -84,7 +87,11 @@ class State {
   }
 
   @logAction
-  registerObserver(nodeId: string, o: Observer, options: RegisterObserverOptions) {
+  registerObserver(
+    nodeId: string,
+    o: Observer,
+    options: RegisterObserverOptions
+  ) {
     this.observers.set(nodeId, o);
     if (options.shouldInitialize) {
       this.notifyObserver(nodeId);
@@ -95,7 +102,9 @@ class State {
   removeObserver(nodeId: string) {
     const didDelete = this.observers.delete(nodeId);
     if (!didDelete) {
-      console.error(`Could not find observer for node ID: ${ nodeId }, observer not deleted`);
+      console.error(
+        `Could not find observer for node ID: ${nodeId}, observer not deleted`
+      );
     }
   }
 

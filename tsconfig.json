@@ -22,10 +22,7 @@
     "strictNullChecks": true,
     "sourceMap": true,
     "target": "esnext",
-    "typeRoots": [
-      "./node_modules/@types",
-      "./src/typings"
-    ]
+    "typeRoots": ["./node_modules/@types", "./src/typings"]
   },
   "exclude": ["node_modules"]
 }

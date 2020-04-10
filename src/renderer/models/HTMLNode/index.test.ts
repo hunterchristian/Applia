@@ -1,4 +1,3 @@
-
 import { HTMLNode } from './index';
 
 const DEFAULT_ATTRS = {
@@ -8,8 +7,7 @@ const DEFAULT_ATTRS = {
     background: 'yellow',
   },
 };
-const createHTMLNode = () =>
-  new HTMLNode('div', DEFAULT_ATTRS);
+const createHTMLNode = () => new HTMLNode('div', DEFAULT_ATTRS);
 
 describe('HTMLNode', () => {
   describe('#updateStyle()', () => {

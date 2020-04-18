@@ -16,7 +16,10 @@
     "release": "build",
     "lint:fix": "./node_modules/tslint/bin/tslint --fix --project tsconfig.json --config tslint.json \"src/**/*.{ts,tsx}\"",
     "lint": "./node_modules/tslint/bin/tslint --project tsconfig.json --config tslint.json \"src/**/*.{ts,tsx}\"",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "style:check": "yarn lint && yarn format:check",
+    "style:fix": "yarn lint:fix && yarn format"
   },
   "build": {
     "appId": "com.electron.applia",
@@ -70,7 +73,7 @@
     "@types/sinon": "^7.0.12",
     "@types/uuid": "^3.4.4",
     "@types/webdriverio": "4.13.0",
-    "auto-bind": "^2.1.0",
+    "auto-bind": "^4.0.0",
     "devtron": "^1.4.0",
     "electron-updater": "^4.0.14",
     "prettier": "^2.0.4",
@@ -111,10 +114,10 @@
     "ts-loader": "^5.3.3",
     "ts-node": "8.0.1",
     "tsconfig-paths": "^3.7.0",
-    "tslint": "^5.12.0",
+    "tslint": "^6.1.1",
     "tslint-loader": "^3.5.4",
     "tslint-microsoft-contrib": "^5.2.1",
-    "typescript": "^3.2.2",
+    "typescript": "^3.8.3",
     "webpack": "^4.28.1",
     "webpack-cli": "^3.2.1",
     "webpack-shell-plugin": "^0.5.0"

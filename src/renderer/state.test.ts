@@ -10,8 +10,7 @@ const mockNotifyObserver = () => {
 
   return original;
 };
-const restoreNotifyObserver = (original: typeof state.notifyObserver) =>
-  (state.notifyObserver = original);
+const restoreNotifyObserver = (original: typeof state.notifyObserver) => (state.notifyObserver = original);
 
 describe('Canvas state', () => {
   test('should initialize a root node', () => {

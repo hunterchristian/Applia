@@ -38,11 +38,7 @@ class State {
   }
 
   @logAction
-  addHTMLNode(
-    parentId: string,
-    tag: Tag,
-    attrs: React.HTMLAttributes<HTMLElement>
-  ) {
+  addHTMLNode(parentId: string, tag: Tag, attrs: React.HTMLAttributes<HTMLElement>) {
     const parent = this.getNode(parentId);
     const newNode = new HTMLNode(tag, attrs);
     parent.addChild(newNode);
@@ -87,11 +83,7 @@ class State {
   }
 
   @logAction
-  registerObserver(
-    nodeId: string,
-    o: Observer,
-    options: RegisterObserverOptions
-  ) {
+  registerObserver(nodeId: string, o: Observer, options: RegisterObserverOptions) {
     this.observers.set(nodeId, o);
     if (options.shouldInitialize) {
       this.notifyObserver(nodeId);
@@ -102,9 +94,7 @@ class State {
   removeObserver(nodeId: string) {
     const didDelete = this.observers.delete(nodeId);
     if (!didDelete) {
-      console.error(
-        `Could not find observer for node ID: ${nodeId}, observer not deleted`
-      );
+      console.error(`Could not find observer for node ID: ${nodeId}, observer not deleted`);
     }
   }
 

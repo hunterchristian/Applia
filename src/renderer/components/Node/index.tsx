@@ -1,12 +1,6 @@
 import autobind from 'auto-bind';
 import * as React from 'react';
-import {
-  DragElementWrapper,
-  DropTarget,
-  DropTargetCollector,
-  DropTargetConnector,
-  DropTargetMonitor,
-} from 'react-dnd';
+import { DragElementWrapper, DropTarget, DropTargetCollector, DropTargetConnector, DropTargetMonitor } from 'react-dnd';
 
 import { SourceProps } from '@components/ComponentPalette/Element';
 import { HTMLNode } from '@models/HTMLNode';
@@ -14,12 +8,7 @@ import { ItemTypes } from '@renderer/constants';
 import { State } from '@renderer/state';
 
 const state = State.getInstance();
-const {
-  addHTMLNode,
-  registerObserver,
-  removeObserver,
-  toggleSelectedNode,
-} = state;
+const { addHTMLNode, registerObserver, removeObserver, toggleSelectedNode } = state;
 
 interface CollectedProps {
   connectDropTarget: DragElementWrapper<{}>;
@@ -38,11 +27,9 @@ type ComponentState = OmitType<HTMLNode, Function> & {
 };
 
 const createRandomRBGVal = () => Math.floor(Math.random() * 256);
-const createRandomColor = () =>
-  `rgb(${createRandomRBGVal()}, ${createRandomRBGVal()}, ${createRandomRBGVal()})`;
+const createRandomColor = () => `rgb(${createRandomRBGVal()}, ${createRandomRBGVal()}, ${createRandomRBGVal()})`;
 
-const logDrop = (text: string) =>
-  console.log(`Drop recorded over element: ${text}`);
+const logDrop = (text: string) => console.log(`Drop recorded over element: ${text}`);
 
 const elementTarget = {
   drop(props: AllComponentProps, monitor: DropTargetMonitor) {
@@ -76,10 +63,7 @@ class Element extends React.Component<AllComponentProps, ComponentState> {
     // Bind all methods to this class
     autobind(this);
     // Copy node into component state so that we can render changes when the observer gets notified
-    this.state = {
-      ...props.node,
-      isSelected: false,
-    };
+    this.state = { ...props.node, isSelected: false };
     registerObserver(
       props.node.id,
       this.handleNodeChanged,
@@ -107,15 +91,13 @@ class Element extends React.Component<AllComponentProps, ComponentState> {
 
   render() {
     const { connectDropTarget, isOver } = this.props;
-    const { attrs, children, classes, isSelected, tag } = this.state;
+    const { attrs, children, classes, tag } = this.state;
     const CustomTag = tag;
 
     return connectDropTarget(
       // @ts-ignore https://github.com/Microsoft/TypeScript/issues/28892
       <CustomTag
-        className={`${[...classes].join(' ')}${
-          isOver ? ' hovering ' : ' '
-        }node`}
+        className={`${[...classes].join(' ')}${isOver ? ' hovering ' : ' '}node`}
         onClick={this.onClick}
         {...attrs}
       >
@@ -125,11 +107,5 @@ class Element extends React.Component<AllComponentProps, ComponentState> {
   }
 }
 
-const makeDroppable = DropTarget<OwnProps, CollectedProps>(
-  ItemTypes.ELEMENT,
-  elementTarget,
-  collect
-);
-export const DroppableElement = makeDroppable(Element) as React.ComponentType<
-  OwnProps
->;
+const makeDroppable = DropTarget<OwnProps, CollectedProps>(ItemTypes.ELEMENT, elementTarget, collect);
+export const DroppableElement = makeDroppable(Element) as React.ComponentType<OwnProps>;

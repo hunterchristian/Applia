@@ -14,12 +14,12 @@
     "test-release:win": "yarn bundle:prod && electron-builder build --win --x64 --publish=never",
     "test-release:mac": "yarn bundle:prod && electron-builder build --mac --x64 --publish=never",
     "release": "build",
+    "lint:check": "./node_modules/tslint/bin/tslint --project tsconfig.json --config tslint.json \"src/**/*.{ts,tsx}\"",
     "lint:fix": "./node_modules/tslint/bin/tslint --fix --project tsconfig.json --config tslint.json \"src/**/*.{ts,tsx}\"",
-    "lint": "./node_modules/tslint/bin/tslint --project tsconfig.json --config tslint.json \"src/**/*.{ts,tsx}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
-    "style:check": "yarn lint && yarn format:check",
-    "style:fix": "yarn lint:fix && yarn format"
+    "format:fix": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "style:check": "yarn lint:check && yarn format:check",
+    "style:fix": "yarn lint:fix && yarn format:fix"
   },
   "build": {
     "appId": "com.electron.applia",

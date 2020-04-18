@@ -9,6 +9,9 @@ jobs:
     - stage: "Test"
       name: "Run unit tests"
       script: yarn test:unit
+    - stage: "Code style"
+      name: "Verify code style conforms to standard"
+      script: yarn style:check
     - stage: "Release"
       name: "Create bundle and build binary"
       if: branch = master AND type = push

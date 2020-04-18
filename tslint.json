@@ -115,7 +115,7 @@
     "no-this-assignment": true,
     "no-unbound-method": false,
     "no-unnecessary-class": true,
-    "no-unsafe-any": true,
+    "no-unsafe-any": false,
     "no-unsafe-finally": true,
     "no-unused-expression": true,
     "no-unused-variable": true,

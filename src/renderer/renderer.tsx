@@ -29,10 +29,6 @@ const DnDEnabledApp = DragDropContext(HTML5Backend)(App);
 
 state.registerObserver(
   state.rootNode.id,
-  (node) =>
-    ReactDOM.render(
-      <DnDEnabledApp rootNode={node} />,
-      document.getElementById('app')
-    ),
+  node => ReactDOM.render(<DnDEnabledApp rootNode={node} />, document.getElementById('app')),
   { shouldInitialize: true }
 );

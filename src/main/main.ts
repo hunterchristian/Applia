@@ -31,9 +31,7 @@ function createWindow(): void {
         slashes: true,
       })
     )
-    .catch((error) =>
-      console.log(`Failed to load BrowserWindow, error: ${error}`)
-    );
+    .catch(error => console.log(`Failed to load BrowserWindow, error: ${error}`));
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {

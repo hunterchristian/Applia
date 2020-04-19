@@ -8,10 +8,14 @@ jobs:
   include:
     - stage: "Test"
       name: "Run unit tests"
-      script: yarn test:unit
+    - script: yarn test:unit
+      name: "Run functional tests"
+      script: yarn test:func
     - stage: "Code style"
-      name: "Verify code style conforms to standard"
-      script: yarn style:check
+      name: "Run prettier code formatter"
+    - script: yarn format:check
+      name: "Run tslint"
+    - script: yarn lint:check
     - stage: "Release"
       name: "Create bundle and build binary"
       if: branch = master AND type = push

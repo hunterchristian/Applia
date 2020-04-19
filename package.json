@@ -78,6 +78,8 @@
     "devtron": "^1.4.0",
     "electron-updater": "^4.0.14",
     "prettier": "^2.0.4",
+    "puppeteer-core": "^3.0.0",
+    "puppeteer-in-electron": "^3.0.0",
     "react": "^16.7.0",
     "react-dnd": "^7.4.5",
     "react-dnd-html5-backend": "^7.4.4",

@@ -17,5 +17,5 @@ jobs:
       if: branch = master AND type = push
       script: yarn bundle:prod && yarn release
       if: branch != master OR type != push
-      script: yarn bundle:prod && yarn test-release:mac
+      script: yarn bundle:prod
 

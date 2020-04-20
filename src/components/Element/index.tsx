@@ -4,12 +4,12 @@ import { DragElementWrapper, DropTarget, DropTargetCollector, DropTargetConnecto
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { SourceProps } from '@components/ComponentPalette/Element';
-import { ItemTypes } from '@renderer/constants';
-import { RootState } from '@renderer/store';
-import { addElement, toggleSelectedElement } from '@renderer/store/elements/actions';
-import { Element as ElementType } from '@renderer/store/elements/types';
-import createElement from '@renderer/util/createElement';
+import { SourceProps } from '@/components/ComponentPalette/Element';
+import { ItemTypes } from '@/constants';
+import { RootState } from '@/store';
+import { addElement, toggleSelectedElement } from '@/store/elements/actions';
+import { Element as ElementType } from '@/store/elements/types';
+import createElement from '@/util/createElement';
 
 interface CollectedProps {
   connectDropTarget: DragElementWrapper<{}>;

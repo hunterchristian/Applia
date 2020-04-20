@@ -6,20 +6,19 @@ os: osx
 
 jobs:
   include:
-    - stage: "Test"
+    - stage: "Test and code style"
       name: "Run unit tests"
     - script: yarn test:unit
       name: "Run functional tests"
       script: yarn test:func
-    - stage: "Code style"
       name: "Run prettier code formatter"
     - script: yarn format:check
       name: "Run tslint"
     - script: yarn lint:check
     - stage: "Release"
       name: "Create bundle and build binary"
-      if: branch = master AND type = push
+    - if: branch = master AND type = push
       script: yarn bundle:prod && yarn release
-      if: branch != master OR type != push
+    - if: branch != master OR type != push
       script: yarn bundle:prod
 

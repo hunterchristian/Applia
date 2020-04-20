@@ -1,15 +1,14 @@
 /**
  * Entry point of the Election app.
  */
-import { app, BrowserWindow, BrowserWindowConstructorOptions } from 'electron';
-import * as os from 'os';
-import * as path from 'path';
-import * as url from 'url';
+const { app, BrowserWindow } = require('electron');
+const os = require('os');
+const path = require('path');
+const url = require('url');
 
-let mainWindow: Electron.BrowserWindow | null;
-
-function createWindow(): void {
-  // Load Redux extension into DevTools if we are not in production
+let mainWindow;
+ 
+function createWindow() {
   if (process.env.NODE_ENV !== 'production') {
     BrowserWindow.addDevToolsExtension(
       path.join(os.homedir(), '.config/chromium/Default/Extensions/lmhkpmbekcpmknklioeibfkpmmfibljd/2.17.0_0')
@@ -17,7 +16,7 @@ function createWindow(): void {
   }
 
   // Create the browser window.
-  const options: BrowserWindowConstructorOptions = {
+  const options = {
     height: 600,
     width: 800,
     webPreferences: {
@@ -26,18 +25,19 @@ function createWindow(): void {
     },
   };
   if (process.env.NODE_ENV !== 'production') {
-    options.webPreferences!.preload = path.resolve(__dirname, 'preload.js');
+    options.webPreferences.preload = path.resolve(__dirname, 'preload.js');
   }
   mainWindow = new BrowserWindow(options);
 
   // And load the index.html of the app.
   mainWindow
     .loadURL(
-      url.format({
-        pathname: path.join(__dirname, './index.html'),
-        protocol: 'file:',
-        slashes: true,
-      })
+      // url.format({
+      //   pathname: path.join(__dirname, './index.html'),
+      //   protocol: 'file:',
+      //   slashes: true,
+      // })
+      'http://localhost:8000'
     )
     .catch(error => console.log(`Failed to load BrowserWindow, error: ${error}`));
 

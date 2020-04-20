@@ -1,5 +1,5 @@
-import { ROOT_EL_ID, ROOT_EL_PARENT_ID } from '@renderer/constants';
-import createElement from '@renderer/util/createElement';
+import { ROOT_EL_ID, ROOT_EL_PARENT_ID } from '@/constants';
+import createElement from '@/util/createElement';
 import {
   AddElementAction,
   ADD_ELEMENT,

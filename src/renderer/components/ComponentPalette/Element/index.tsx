@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ConnectDragSource, DragSource, DragSourceConnector, DragSourceMonitor } from 'react-dnd';
 
-import { Tag } from '@models/HTMLNode';
 import { ItemTypes } from '@renderer/constants';
+import { Tag } from '@renderer/store/elements/types';
 
 interface DragProps {
   isDragging: boolean;

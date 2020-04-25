@@ -36,7 +36,7 @@
     "no-non-null-assertion": false,
     "no-parameter-reassignment": true,
     "no-reference": true,
-    "no-unnecessary-type-assertion": true,
+    "no-unnecessary-type-assertion": false,
     "no-var-requires": true,
     "only-arrow-functions": false,
     "prefer-for-of": false,
@@ -88,7 +88,7 @@
     "no-implicit-dependencies": [
       true,
       "dev",
-      ["@", "@public", "@main", "@models", "@renderer", "@utils", "@components", "@decorators"]
+      ["@", "@public", "@main", "@models", "@renderer", "@utils", "@components", "@decorators", "@store"]
     ],
     "no-inferred-empty-object-type": true,
     "no-invalid-template-strings": false,

@@ -2,12 +2,20 @@
  * Entry point of the Election app.
  */
 import { app, BrowserWindow, BrowserWindowConstructorOptions } from 'electron';
+import * as os from 'os';
 import * as path from 'path';
 import * as url from 'url';
 
 let mainWindow: Electron.BrowserWindow | null;
 
 function createWindow(): void {
+  // Load Redux extension into DevTools if we are not in production
+  if (process.env.NODE_ENV !== 'production') {
+    BrowserWindow.addDevToolsExtension(
+      path.join(os.homedir(), '.config/chromium/Default/Extensions/lmhkpmbekcpmknklioeibfkpmmfibljd/2.17.0_0')
+    );
+  }
+
   // Create the browser window.
   const options: BrowserWindowConstructorOptions = {
     height: 600,

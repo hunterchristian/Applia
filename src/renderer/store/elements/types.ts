@@ -1,4 +1,31 @@
-import uuid from 'uuid/v4';
+export const ADD_ELEMENT = 'ADD_ELEMENT';
+export interface AddElementAction {
+  type: typeof ADD_ELEMENT;
+  payload: Element;
+}
+
+export const TOGGLE_SELECTED_ELEMENT = 'TOGGLE_SELECTED_ELEMENT';
+export interface ToggleSelectedElementAction {
+  type: typeof TOGGLE_SELECTED_ELEMENT;
+  payload: {
+    id: string;
+  };
+}
+
+export type ElementActionTypes = AddElementAction | ToggleSelectedElementAction;
+
+export interface Element {
+  attrs: React.HTMLAttributes<HTMLElement>;
+  children: Element[];
+  classes: Set<string>;
+  id: string;
+  parentId: string;
+  isSelected: boolean;
+  tag: Tag;
+}
+
+export type ElementsState = ImmutableRecord<string, Element>;
+export type SelectedElementState = string;
 
 // tslint:disable-next-line max-line-length
 export type Tag =
@@ -120,31 +147,3 @@ export type Tag =
   | 'var'
   | 'video'
   | 'wbr';
-
-export class HTMLNode {
-  attrs: React.HTMLAttributes<HTMLElement>;
-  children: HTMLNode[];
-  classes: Set<string>;
-  id: string;
-  tag: Tag;
-
-  constructor(tag: Tag, attrs: React.HTMLAttributes<HTMLElement>) {
-    this.attrs = attrs;
-    this.children = [];
-    this.id = uuid();
-    this.tag = tag;
-    this.classes = new Set();
-  }
-
-  addChild(child: HTMLNode) {
-    this.children.push(child);
-  }
-
-  updateStyle(style: React.CSSProperties) {
-    this.attrs.style = this.attrs.style || {};
-    this.attrs.style = {
-      ...this.attrs.style,
-      ...style,
-    };
-  }
-}

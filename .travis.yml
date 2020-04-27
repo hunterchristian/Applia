@@ -1,21 +1,24 @@
 language: node_js
 node_js:
-  - 10.16.0
+  - 12.12.0
 
 os: osx
 
 jobs:
   include:
-    - stage: "Test"
+    - stage: "Test and code style"
       name: "Run unit tests"
-      script: yarn test:unit
-    - stage: "Code style"
-      name: "Verify code style conforms to standard"
-      script: yarn style:check
+    - script: yarn test:unit
+      name: "Run functional tests"
+      script: yarn test:func
+      name: "Run prettier code formatter"
+    - script: yarn format:check
+      name: "Run tslint"
+    - script: yarn lint:check
     - stage: "Release"
       name: "Create bundle and build binary"
-      if: branch = master AND type = push
+    - if: branch = master AND type = push
       script: yarn bundle:prod && yarn release
-      if: branch != master OR type != push
+    - if: branch != master OR type != push
       script: yarn bundle:prod
 

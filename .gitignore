@@ -1,3 +1,4 @@
+.cache/
 .vscode/
 .history/
 dist/
@@ -28,4 +29,7 @@ Thumbs.db
 
 # OS X files
 .DS_Store
+
+# Gatsby build output
+public/
 ._*

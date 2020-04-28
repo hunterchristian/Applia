@@ -8,22 +8,19 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { devToolsEnhancer } from 'redux-devtools-extension';
 
-import { ComponentPalette } from '@/components/ComponentPalette';
-import { DroppableElement } from '@/components/Element';
-import { ROOT_EL_ID } from '@/constants';
+import { App } from '@/components/App';
 import { rootReducer } from '@/store';
+
+import '../fonts.scss';
 
 const store = createStore(rootReducer, devToolsEnhancer({}));
 
-const App = () => (
+const AppWithRedux = () => (
   <Provider store={store}>
-    <div className={'editor'}>
-      <ComponentPalette />
-      <DroppableElement elementId={ROOT_EL_ID} />
-    </div>
+    <App />
   </Provider>
 );
 
-const DnDEnabledApp = DragDropContext(HTML5Backend)(App);
+const DnDEnabledApp = DragDropContext(HTML5Backend)(AppWithRedux);
 
 export default DnDEnabledApp;

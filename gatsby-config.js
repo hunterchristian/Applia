@@ -1,3 +1,6 @@
 module.exports = {
-  plugins: [`gatsby-plugin-typescript`]
+  plugins: [
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-typescript`
+  ]
 }

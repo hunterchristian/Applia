@@ -8,6 +8,8 @@ import {
   SelectedElementState,
   ToggleSelectedElementAction,
   TOGGLE_SELECTED_ELEMENT,
+  UPDATE_ELEMENT_STYLES,
+  UpdateElementStylesAction,
 } from './types';
 
 const elementsInitialState: ElementsState = {
@@ -65,6 +67,22 @@ const toggleSelectedElement = (
   ...deselectPreviouslySelectedElementIfDifferent(state, selectedElementId, action.payload.id),
 });
 
+const updateElementStyles = (
+  state: ElementsState,
+  action: UpdateElementStylesAction,
+): ElementsState => ({
+  ...state,
+  [action.payload.id]: {
+    ...state[action.payload.id],
+    attrs: {
+      ...state[action.payload.id].attrs,
+      style: {
+        ...action.payload.styles,
+      },
+    },
+  },
+});
+
 const elementsByIdReducer = (
   state = elementsInitialState,
   action: ElementActionTypes,
@@ -75,6 +93,8 @@ const elementsByIdReducer = (
       return addElement(state, action as AddElementAction);
     case TOGGLE_SELECTED_ELEMENT:
       return toggleSelectedElement(state, action as ToggleSelectedElementAction, selectedElementId);
+    case UPDATE_ELEMENT_STYLES:
+      return updateElementStyles(state, action as UpdateElementStylesAction);
     default:
       return state;
   }

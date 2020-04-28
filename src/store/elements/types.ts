@@ -12,7 +12,19 @@ export interface ToggleSelectedElementAction {
   };
 }
 
-export type ElementActionTypes = AddElementAction | ToggleSelectedElementAction;
+export const UPDATE_ELEMENT_STYLES = 'UPDATE_ELEMENT_STYLES';
+export interface UpdateElementStylesAction {
+  type: typeof UPDATE_ELEMENT_STYLES;
+  payload: {
+    id: string;
+    styles: React.CSSProperties;
+  };
+}
+
+export type ElementActionTypes =
+  AddElementAction |
+  ToggleSelectedElementAction |
+  UpdateElementStylesAction;
 
 export interface Element {
   attrs: React.HTMLAttributes<HTMLElement>;

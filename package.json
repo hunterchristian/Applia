@@ -17,7 +17,7 @@
     "lint:fix": "./node_modules/tslint/bin/tslint --fix --project tsconfig.json --config tslint.json \"src/**/*.{ts,tsx}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "format:fix": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
-    "type-check": "tsc --noEmit",
+    "type-check": "tsc --noEmit --skipLibCheck",
     "electron-dev": "concurrently \"gatsby develop\" \"wait-on http://localhost:8000 && electron main/index.js\""
   },
   "build": {

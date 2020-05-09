@@ -2,8 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import ElementWithEditableContent from '@/renderer/components/StyleEditor/ElementWithEditableContent';
-import { RootState } from '@/renderer/store';
-import { updateElementStyles } from '@/renderer/store/elements/actions';
+import { RootState } from '@/shared/store';
+import { updateElementStyles } from '@/shared/store/elements/actions';
 import './StyleEditor.scss';
 
 interface OwnProps {

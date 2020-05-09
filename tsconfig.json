@@ -8,12 +8,12 @@
     "paths": {
       "@/*": ["src/*"],
       "@public/*": ["public/*"],
-      "@main/*": ["main/*"],
+      "@main/*": ["src/main/*"],
       "@models/*": ["src/models/*"],
       "@renderer/*": ["src/renderer/*"],
       "@utils/*": ["src/utils/*"],
       "@decorators/*": ["src/decorators/*"],
-      "@store/*": ["src/renderer/store/*"]
+      "@store/*": ["src/shared/store/*"]
     },
     "module": "commonjs",
     "moduleResolution": "node",

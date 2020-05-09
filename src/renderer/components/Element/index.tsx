@@ -6,9 +6,9 @@ import { Dispatch } from 'redux';
 
 import { SourceProps } from '@/renderer/components/ComponentPalette/Element';
 import { ItemTypes } from '@/renderer/constants';
-import { RootState } from '@/renderer/store';
-import { addElement, toggleSelectedElement } from '@/renderer/store/elements/actions';
-import { Element as ElementType } from '@/renderer/store/elements/types';
+import { RootState } from '@/shared/store';
+import { addElement, toggleSelectedElement } from '@/shared/store/elements/actions';
+import { Element as ElementType } from '@/shared/store/elements/types';
 import createElement from '@/renderer/util/createElement';
 
 interface CollectedProps {

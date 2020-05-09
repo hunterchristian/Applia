@@ -2,7 +2,7 @@ import React from 'react';
 import ContentEditable from 'react-contenteditable';
 
 interface OwnProps {
-  className: string;
+  className?: string;
   text: string;
   onBlur?(text: string): void;
   onChange?(text: string): void;
@@ -21,7 +21,7 @@ class ElementWithEditableContent extends React.Component<OwnProps, State> {
     this.state = {html: `${ props.text }`};
   }
 
-  handleChange = evt => {
+  handleChange = (evt: any) => {
     this.setState({html: evt.target.value});
     if (this.props.onChange) {
       this.props.onChange(evt.target.value);

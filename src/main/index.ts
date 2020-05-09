@@ -1,12 +1,23 @@
 /**
  * Entry point of the Election app.
  */
-const { app, BrowserWindow } = require('electron');
-const os = require('os');
-const path = require('path');
+import { app, BrowserWindow, BrowserWindowConstructorOptions } from 'electron';
+import os from 'os';
+import path from 'path';
+import { forwardToRenderer, replayActionMain } from 'electron-redux';
+import { createStore, applyMiddleware } from 'redux';
 
-let mainWindow;
- 
+import { rootReducer } from '../shared/store';
+
+const store = createStore(
+  rootReducer,
+  applyMiddleware(forwardToRenderer)
+);
+
+replayActionMain(store);
+
+let mainWindow: Nullable<BrowserWindow>;
+
 function createWindow() {
   if (process.env.NODE_ENV !== 'production') {
     BrowserWindow.addDevToolsExtension(
@@ -15,7 +26,7 @@ function createWindow() {
   }
 
   // Create the browser window.
-  const options = {
+  const options: BrowserWindowConstructorOptions = {
     height: 600,
     width: 800,
     webPreferences: {
@@ -24,6 +35,7 @@ function createWindow() {
     },
   };
   if (process.env.NODE_ENV !== 'production') {
+    options.webPreferences = options.webPreferences || {};
     options.webPreferences.preload = path.resolve(__dirname, 'main/preload.js');
   }
   mainWindow = new BrowserWindow(options);

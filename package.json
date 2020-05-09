@@ -5,6 +5,7 @@
   "main": "./dist/main.bundle.js",
   "scripts": {
     "init": "yarn && git config core.hooksPath .githooks",
+    "bundle:dev": "rimraf dist && cross-env NODE_ENV=development webpack --watch --progress --colors",
     "bundle:prod": "rimraf dist && cross-env NODE_ENV=production webpack --progress --colors",
     "test:unit": "jest src",
     "test:unit:debug": "node --inspect-brk node_modules/.bin/jest src --runInBand",
@@ -18,7 +19,8 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "format:fix": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "type-check": "tsc --noEmit --skipLibCheck",
-    "electron-dev": "concurrently \"gatsby develop\" \"wait-on http://localhost:8000 && electron main/index.js\""
+    "gatsby-develop": "gatsby develop",
+    "electron-dev": "concurrently \"gatsby develop\" \"yarn bundle:dev\" \"wait-on http://localhost:8000 && wait-on ./dist/main.bundle.js && electron ./dist/main.bundle.js\""
   },
   "build": {
     "appId": "com.electron.applia",

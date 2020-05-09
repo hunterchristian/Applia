@@ -5,7 +5,7 @@ import { ComponentPalette } from '@/renderer/components/ComponentPalette';
 import { DroppableElement } from '@/renderer/components/Element';
 import StyleEditor from '@/renderer/components/StyleEditor';
 import { ROOT_EL_ID } from '@/renderer/constants';
-import { RootState } from '@/renderer/store';
+import { RootState } from '@/shared/store';
 
 export const App = () => {
   const selectedElementId = useSelector((state: RootState) => state.elements.selectedElementId);

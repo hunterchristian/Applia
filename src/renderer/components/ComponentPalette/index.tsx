@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { DraggableElement } from '@/components/ComponentPalette/Element';
+import { DraggableElement } from '@/renderer/components/ComponentPalette/Element';
 
 export const ComponentPalette = () => (
   <div className={'component-palette'}>

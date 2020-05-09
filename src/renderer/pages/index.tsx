@@ -8,8 +8,8 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { devToolsEnhancer } from 'redux-devtools-extension';
 
-import { App } from '@/components/App';
-import { rootReducer } from '@/store';
+import { App } from '@/renderer/components/App';
+import { rootReducer } from '@/renderer/store';
 
 import '../fonts.scss';
 

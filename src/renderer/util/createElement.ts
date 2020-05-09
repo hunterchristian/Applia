@@ -1,6 +1,6 @@
 import uuid from 'uuid/v4';
 
-import { Element } from '@/store/elements/types';
+import { Element } from '@/renderer/store/elements/types';
 
 const createElement = (parentId: string, elementParts: Partial<Element>): Element => ({
   ...{

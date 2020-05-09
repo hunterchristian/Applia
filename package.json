@@ -75,8 +75,10 @@
     "auto-bind": "^4.0.0",
     "concurrently": "^5.1.0",
     "devtron": "^1.4.0",
+    "electron-redux": "^1.5.2",
     "electron-updater": "^4.0.14",
     "gatsby": "^2.20.25",
+    "gatsby-plugin-page-creator": "^2.3.1",
     "gatsby-plugin-sass": "^2.3.0",
     "gatsby-plugin-typescript": "^2.3.3",
     "node-sass": "^4.14.0",
@@ -152,7 +154,7 @@
       "node_modules"
     ],
     "moduleNameMapper": {
-      "@/(.*)": "<rootDir>/src/$1",
+      "@/renderer(.*)": "<rootDir>/src/$1",
       "@public/(.*)": "<rootDir>/src/public/$1",
       "@main/(.*)": "<rootDir>/src/main/$1",
       "@models/(.*)": "<rootDir>/src/models/$1",

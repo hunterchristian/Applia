@@ -18,7 +18,7 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "format:fix": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "type-check": "tsc --noEmit",
-    "electron-dev": "concurrently \"gatsby develop\" \"wait-on http://localhost:8000 && electron electron.js\""
+    "electron-dev": "concurrently \"gatsby develop\" \"wait-on http://localhost:8000 && electron main/index.js\""
   },
   "build": {
     "appId": "com.electron.applia",

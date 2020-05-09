@@ -4,7 +4,6 @@
 const { app, BrowserWindow } = require('electron');
 const os = require('os');
 const path = require('path');
-const url = require('url');
 
 let mainWindow;
  
@@ -25,7 +24,7 @@ function createWindow() {
     },
   };
   if (process.env.NODE_ENV !== 'production') {
-    options.webPreferences.preload = path.resolve(__dirname, 'preload.js');
+    options.webPreferences.preload = path.resolve(__dirname, 'main/preload.js');
   }
   mainWindow = new BrowserWindow(options);
 
